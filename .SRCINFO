@@ -1,16 +1,15 @@
 pkgbase = evm-contracts-tools
 	pkgdesc = EVM networks smart contracts tools.
-	pkgver = 0.0.0.0.0.0.0.0.0.0.0.0.0.1.1
+	pkgver = 0.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1
 	pkgrel = 1
 	url = https://github.com/themartiancompany/evm-contracts-tools
 	arch = any
 	license = AGPL3
 	checkdepends = shellcheck
 	makedepends = make
-	makedepends = git
 	depends = nodejs-ethers
-	source = evm-contracts-tools-aaac47934637d895695d2fefb7729e0ef7b78dab::git+file:///data/data/com.termux/files/home/evm-contracts-tools#commit=aaac47934637d895695d2fefb7729e0ef7b78dab?signed
+	source = evm-contracts-tools-696c007dd8d5d27c62c14b170d51de2b119a8a7e.zip::https://github.com/themartiancompany/evm-contracts-tools/archive/696c007dd8d5d27c62c14b170d51de2b119a8a7e.zip
 	validpgpkeys = 97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9
-	sha256sums = SKIP
+	sha256sums = 61d0a0b21bb8e984ea36ce9c0688ab059f3ccddbb1527fbe6c7b898ab75652f9
 
 pkgname = evm-contracts-tools

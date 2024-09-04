@@ -3,11 +3,11 @@
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 
-_offline="true"
-_git="true"
+_offline="false"
+_git="false"
 pkgname=evm-contracts-tools
-pkgver=0.0.0.0.0.0.0.0.0.0.0.0.0.1.1
-_commit="aaac47934637d895695d2fefb7729e0ef7b78dab"
+pkgver=0.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1
+_commit="696c007dd8d5d27c62c14b170d51de2b119a8a7e"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
