@@ -6,8 +6,8 @@
 _offline="false"
 _git="false"
 pkgname=evm-contracts-tools
-pkgver=0.0.0.0.0.0.0.0.0.0.0.0..1
-_commit="fce7b2fbfffa641b6e52b264c664677f7eac7fb7"
+pkgver="0.0.0.0.0.0.0.0.0.0.0.1.1.1.1.1"
+_commit="dea25a21e605b17cd481a0803639fc6685e988c2"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
@@ -68,7 +68,7 @@ _tarname="${pkgname}-${_tag}"
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _tar="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum="00076f65c9dbab6b565973ae874fc502d2aab0008154248f5617b5d3ec5f8d7a"
+    _sum="2de8eb7e8a83b75559789ff5960ffce646c2a5316115803eb369716ae851615c"
   fi && \
     source+=(
       "${_tar}"
