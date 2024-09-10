@@ -9,6 +9,7 @@ pkgbase = evm-contracts-tools
 	makedepends = make
 	depends = evm-contracts-abi-get
 	depends = evm-wallet
+	depends = libcrash-bash
 	depends = libcrash-js
 	depends = nodejs
 	depends = nodejs-ethers
