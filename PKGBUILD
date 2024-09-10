@@ -6,8 +6,8 @@
 _offline="false"
 _git="false"
 pkgname=evm-contracts-tools
-pkgver="0.0.0.0.0.0.0.0.0.0.0.1.1.1.1.1"
-_commit="dea25a21e605b17cd481a0803639fc6685e988c2"
+pkgver="0.0.0.0.0.0.0.0.0.0.0.1.1.1.1.1.1"
+_commit="93f532355d9185edf769bc0a2ee102fd4d1ab502"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
@@ -24,6 +24,7 @@ license=(
 )
 depends=(
   "evm-contracts-abi-get"
+  "evm-wallet"
   "nodejs-ethers"
 )
 _os="$( \
@@ -68,7 +69,7 @@ _tarname="${pkgname}-${_tag}"
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _tar="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum="2de8eb7e8a83b75559789ff5960ffce646c2a5316115803eb369716ae851615c"
+    _sum="5d2d7eaa0133028a504c099fa6b6d66247cd7c7ef8bad72f6ecb63476514f762"
   fi && \
     source+=(
       "${_tar}"
