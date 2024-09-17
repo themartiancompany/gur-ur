@@ -1,6 +1,6 @@
 pkgbase = evm-contracts-tools
 	pkgdesc = EVM networks smart contracts tools.
-	pkgver = 0.0.0.0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1
+	pkgver = 0.0.0.0.0.0.0.0.0.0.1
 	pkgrel = 1
 	url = https://github.com/themartiancompany/evm-contracts-tools
 	arch = any
@@ -13,8 +13,8 @@ pkgbase = evm-contracts-tools
 	depends = libcrash-js
 	depends = nodejs
 	depends = nodejs-ethers
-	source = evm-contracts-tools-550def8b2c6e94fd7d306c73a4090141ec12d321.zip::https://github.com/themartiancompany/evm-contracts-tools/archive/550def8b2c6e94fd7d306c73a4090141ec12d321.zip
+	source = evm-contracts-tools-2a0ea92b017b8d3d772ebe5f180f8fea3109f6ae.zip::https://github.com/themartiancompany/evm-contracts-tools/archive/2a0ea92b017b8d3d772ebe5f180f8fea3109f6ae.zip
 	validpgpkeys = 97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9
-	sha256sums = 42cffd2ce90e8b59e8e002c241806f54f496c83498c5ea849fb6d438673da4d4
+	sha256sums = d332d52b53b1a2cb8566263036540c8c5d61e8e1585df5a31656be568ada3e01
 
 pkgname = evm-contracts-tools
