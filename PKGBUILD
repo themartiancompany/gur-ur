@@ -7,8 +7,8 @@ _node="nodejs"
 _offline="false"
 _git="false"
 pkgname=evm-contracts-tools
-pkgver="0.0.0.0.0.0.0.0.0.0.1.1.1.1.1"
-_commit="475af633e7b3b61f0eded47fd37a134e8bd7a057"
+pkgver="0.0.0.0.0.0.0.0.0.0.1.1.1.1.1.1"
+_commit="a752c8727eb5a1c82a79c341c6fc01e2286292a1"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
@@ -70,7 +70,7 @@ elif [[ "${_git}" == false ]]; then
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _src="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum='291c851a79975ad6a58952baebdad95171c9fe8f01ccd0e8e9d1a80375355258'
+    _sum='5d52dab9630d4ec5c6e866f551792f81ae3791c28ab90c505d61335c4457ade0'
   fi
 fi
 source=(
