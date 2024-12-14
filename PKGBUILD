@@ -39,6 +39,7 @@ _os="$( \
   depends+=(
   )
 optdepends=(
+  "evm-chains-info: automatic RPC selection for many blockchains"
 )
 [[ "${_os}" == 'Android' ]] && \
   optdepends+=(
