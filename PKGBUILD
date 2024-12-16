@@ -72,7 +72,7 @@ elif [[ "${_git}" == false ]]; then
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _src="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum='5d52dab9630d4ec5c6e866f551792f81ae3791c28ab90c505d61335c4457ade0'
+    _sum='9f6345763dc9c5ac4508bdcb5b7bce80224d508984296fabc5fe074f82cc45cc'
   fi
 fi
 source=(
