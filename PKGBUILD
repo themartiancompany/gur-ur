@@ -7,8 +7,8 @@ _node="nodejs"
 _offline="false"
 _git="false"
 pkgname=evm-contracts-tools
-pkgver="0.0.0.0.0.0.0.0.0.0.1.1.1.1.1.1"
-_commit="a752c8727eb5a1c82a79c341c6fc01e2286292a1"
+pkgver="0.0.0.0.0.0.0.0.0.0.1.1.1.1.1.1.1"
+_commit="652a9b20807918d16642755283d43462e9613221"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
@@ -24,6 +24,8 @@ license=(
   AGPL3
 )
 depends=(
+  "evm-chains-explorers"
+  "evm-chains-info"
   "evm-contracts-abi-get"
   "evm-wallet"
   "libcrash-bash"
