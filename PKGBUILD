@@ -1,5 +1,24 @@
 # SPDX-License-Identifier: AGPL-3.0
+
+#    ----------------------------------------------------------------------
+#    Copyright © 2024, 2025  Pellegrino Prevete
 #
+#    All rights reserved
+#    ----------------------------------------------------------------------
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU Affero General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU Affero General Public License for more details.
+#
+#    You should have received a copy of the GNU Affero General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
 # Maintainer: Truocolo <truocolo@aol.com>
 # Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
 
@@ -7,21 +26,21 @@ _node="nodejs"
 _offline="false"
 _git="false"
 pkgname=evm-contracts-tools
-pkgver="0.0.0.0.0.0.0.0.0.0.1.1.1.1.1.1.1.1.1.1.1"
-_commit="82a4cf1c273b9d7543ada7d1cb3240b6eaac78c4"
+pkgver="0.0.0.0.0.0.0.0.0.1.1"
+_commit="572d42ca94aac9ed9cf4058283111facfa34fbe7"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
 )
 pkgdesc="${_pkgdesc[*]}"
 arch=(
-  any
+  'any'
 )
 _http="https://github.com"
 _ns="themartiancompany"
 url="${_http}/${_ns}/${pkgname}"
 license=(
-  AGPL3
+  'AGPL3'
 )
 depends=(
   "evm-chains-explorers"
@@ -72,7 +91,7 @@ elif [[ "${_git}" == false ]]; then
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _src="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum='ef8213ef15f1b127fb0a1c75aed7b4770ad9f2d627407342aea55a267643f5be'
+    _sum='7ba2fb13ad949d7d476fb584cb7c33fe2956b003f6f995e3436cc4ed3a4c96be'
   fi
 fi
 source=(
