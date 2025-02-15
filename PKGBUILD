@@ -97,10 +97,10 @@ fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum='26f74a82a97637a938276e87c5e1be960eee4e9c711c2a2be9955f17e1f9a6ab'
+_archive_sum='4792425d1bead55ae6acfc01133a1a6d4f4d69e350b72b0435b8d4a5be9420c7'
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum="bc15f546914a32dbb715bdb6841cc02ceea237621ed34315e094563e16fc1359"
+_archive_sig_sum="e41b67b3f1295a0514100df5249290473b1c09d386a1e2ce546f4ad76f6d0360"
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
@@ -127,7 +127,7 @@ elif [[ "${_git}" == false ]]; then
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _src="${_tarname}.zip::${_url}/archive/${_commit}.zip"
-    _sum='7ba2fb13ad949d7d476fb584cb7c33fe2956b003f6f995e3436cc4ed3a4c96be'
+    _sum="${_archive_sum}"
   fi
 fi
 source=(
