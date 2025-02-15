@@ -20,14 +20,31 @@
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 # Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Pellegrino Prevete (tallero) <pellegrinoprevete@gmail.com>
+# Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
+# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
+# Maintainer: Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
+_evmfs_available="$( \
+  command \
+    -v \
+    "evmfs" || \
+    true)"
+if [[ ! -v "_evmfs" ]]; then
+  if [[ "${_evmfs_available}" != "" ]]; then
+    _evmfs="true"
+  elif [[ "${_evmfs_available}" == "" ]]; then
+    _evmfs="false"
+  fi
+fi
+_os="$( \
+  uname \
+    -o)"
 _node="nodejs"
 _offline="false"
 _git="false"
 pkgname=evm-contracts-tools
 pkgver="0.0.0.0.0.0.0.0.0.1.1"
-_commit="572d42ca94aac9ed9cf4058283111facfa34fbe7"
+_commit="7f4d8a6124d9225d0575d93662b6e67b7712d023"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
@@ -52,9 +69,6 @@ depends=(
   "${_node}"
   "${_node}-ethers"
 )
-_os="$( \
-  uname \
-    -o)"
 [[ "${_os}" != "GNU/Linux" ]] && \
 [[ "${_os}" == "Android" ]] && \
   depends+=(
@@ -77,9 +91,31 @@ _url="${url}"
 _tag="${_commit}"
 _tag_name="commit"
 _tarname="${pkgname}-${_tag}"
-[[ "${_offline}" == "true" ]] && \
+if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
-if [[ "${_git}" == true ]]; then
+fi
+_evmfs_network="100"
+_evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
+_evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
+_archive_sum='26f74a82a97637a938276e87c5e1be960eee4e9c711c2a2be9955f17e1f9a6ab'
+_evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
+_evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
+_archive_sig_sum="bc15f546914a32dbb715bdb6841cc02ceea237621ed34315e094563e16fc1359"
+_archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
+_archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
+if [[ "${_evmfs}" == "true" ]]; then
+  makedepends+=(
+    "evmfs"
+  )
+  _src="${_evmfs_archive_src}"
+  _sum="${_archive_sum}"
+  source+=(
+    "${_archive_sig_src}"
+  )
+  sha256sums+=(
+    "${_archive_sig_sum}"
+  )
+elif [[ "${_git}" == true ]]; then
   makedepends+=(
     "git"
   )
@@ -103,6 +139,8 @@ sha256sums=(
 validpgpkeys=(
   # Truocolo <truocolo@aol.com>
   '97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9'
+  # Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
+  '12D8E3D7888F741E89F86EE0FEC8567A644F1D16'
 )
 
 check() {
