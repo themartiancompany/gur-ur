@@ -43,8 +43,8 @@ _node="nodejs"
 _offline="false"
 _git="false"
 pkgname=evm-contracts-tools
-pkgver="0.0.0.0.0.0.0.0.0.1.1"
-_commit="7f4d8a6124d9225d0575d93662b6e67b7712d023"
+pkgver="0.0.0.0.0.0.0.0.0.1.1.1"
+_commit="9937d7b1b80f9acde6b3d4f8fae610683dfdd7b0"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
@@ -97,10 +97,10 @@ fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum='4792425d1bead55ae6acfc01133a1a6d4f4d69e350b72b0435b8d4a5be9420c7'
+_archive_sum="e0539be245369fef6225e9dfd6fdc44a91df3843e3d3e86a275bc525e6b34936"
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum="e41b67b3f1295a0514100df5249290473b1c09d386a1e2ce546f4ad76f6d0360"
+_archive_sig_sum="203989a6cd76aac8ee3c074cab8261478b80900ef86c51d4914cdc9ecc9ca448"
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
@@ -139,6 +139,8 @@ sha256sums=(
 validpgpkeys=(
   # Truocolo <truocolo@aol.com>
   '97E989E6CF1D2C7F7A41FF9F95684DBE23D6A3E9'
+  # Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
+  'F690CBC17BD1F53557290AF51FC17D540D0ADEED'
   # Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
   '12D8E3D7888F741E89F86EE0FEC8567A644F1D16'
 )
