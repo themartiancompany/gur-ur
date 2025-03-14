@@ -42,9 +42,10 @@ _os="$( \
 _node="nodejs"
 _offline="false"
 _git="false"
+_py="python"
 pkgname=evm-contracts-tools
-pkgver="0.0.0.0.0.0.0.0.0.1.1.1"
-_commit="9937d7b1b80f9acde6b3d4f8fae610683dfdd7b0"
+pkgver="0.0.0.0.0.0.0.0.1"
+_commit="beafcd40b01e042c7f649167eed8ac22f675eec0"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
@@ -80,7 +81,8 @@ optdepends=(
   optdepends+=(
   )
 makedepends=(
-  make
+  'make'
+  "${_py}-docutils"
 )
 checkdepends=(
   "shellcheck"
@@ -97,10 +99,10 @@ fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum="e0539be245369fef6225e9dfd6fdc44a91df3843e3d3e86a275bc525e6b34936"
+_archive_sum='335ba2acc7a3006e55bd334697542852e056dd8cf012e9fe9870a8578071421f'
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
-_archive_sig_sum="203989a6cd76aac8ee3c074cab8261478b80900ef86c51d4914cdc9ecc9ca448"
+_archive_sig_sum='bd2bd7d65233ac2714dbde8d0ad5cee70f6dcbab97e7ac427a2568c53389f812'
 _archive_sig_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sig_sum}"
 _archive_sig_src="${_tarname}.zip.sig::${_archive_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
