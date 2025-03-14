@@ -44,8 +44,8 @@ _offline="false"
 _git="false"
 _py="python"
 pkgname=evm-contracts-tools
-pkgver="0.0.0.0.0.0.0.0.1"
-_commit="beafcd40b01e042c7f649167eed8ac22f675eec0"
+pkgver="0.0.0.0.0.0.0.0.1.1"
+_commit="1aff2be1eb37ea1b80b10db6cb8d1bb84c1306ee"
 pkgrel=1
 _pkgdesc=(
   "EVM networks smart contracts tools."
@@ -99,7 +99,7 @@ fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum='335ba2acc7a3006e55bd334697542852e056dd8cf012e9fe9870a8578071421f'
+_archive_sum="5bb71ffe12bda6ed2a03851295cff32498de07b0f1305e5a9926027444208c25"
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
 _archive_sig_sum='bd2bd7d65233ac2714dbde8d0ad5cee70f6dcbab97e7ac427a2568c53389f812'
