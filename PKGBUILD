@@ -67,7 +67,7 @@ depends=(
   "evm-wallet"
   "libcrash-bash"
   "libcrash-js"
-  "${_node}"
+  "node-run"
   "${_node}-ethers"
 )
 [[ "${_os}" != "GNU/Linux" ]] && \
