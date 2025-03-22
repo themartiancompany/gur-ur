@@ -43,12 +43,12 @@ _node="nodejs"
 _offline="false"
 _git="false"
 _py="python"
-pkgname=evm-contracts-tools
-pkgver="0.0.0.0.0.0.0.0.1.1"
-_commit="1aff2be1eb37ea1b80b10db6cb8d1bb84c1306ee"
+pkgname=gur
+pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
+_commit="7007ac065081181a34331088f47f76bc7d77fe48"
 pkgrel=1
 _pkgdesc=(
-  "EVM networks smart contracts tools."
+  "Ur Github HTTP mirrors management tool."
 )
 pkgdesc="${_pkgdesc[*]}"
 arch=(
@@ -61,21 +61,16 @@ license=(
   'AGPL3'
 )
 depends=(
-  "evm-chains-explorers"
-  "evm-chains-info"
-  "evm-contracts-abi-get"
-  "evm-wallet"
+  "gh"
+  "jq"
   "libcrash-bash"
-  "libcrash-js"
-  "node-run"
-  "${_node}-ethers"
+  "${_py}-pygithub"
 )
 [[ "${_os}" != "GNU/Linux" ]] && \
 [[ "${_os}" == "Android" ]] && \
   depends+=(
   )
 optdepends=(
-  "evm-chains-info: automatic RPC selection for many blockchains"
 )
 [[ "${_os}" == 'Android' ]] && \
   optdepends+=(
@@ -165,3 +160,4 @@ package() {
 }
 
 # vim: ft=sh syn=sh et
+sha256sums=('744296ecd8b0523ebaa4a1b9800ade1456a1810bd2de909def4010dbcc14aaf2')
