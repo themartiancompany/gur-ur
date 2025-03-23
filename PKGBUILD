@@ -44,8 +44,8 @@ _offline="false"
 _git="false"
 _py="python"
 pkgname=gur
-pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
-_commit="7007ac065081181a34331088f47f76bc7d77fe48"
+pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
+_commit="c72d061a58bb1c274d28a1ffa706a5fdc1e9786f"
 pkgrel=1
 _pkgdesc=(
   "Ur Github HTTP mirrors management tool."
@@ -94,7 +94,7 @@ fi
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
-_archive_sum="5bb71ffe12bda6ed2a03851295cff32498de07b0f1305e5a9926027444208c25"
+_archive_sum="3603ce923d8752fb81d4735e57e8439095f552b9a6383d3b1f9c25254dbaa0dc"
 _evmfs_archive_uri="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}/${_archive_sum}"
 _evmfs_archive_src="${_tarname}.zip::${_evmfs_archive_uri}"
 _archive_sig_sum='bd2bd7d65233ac2714dbde8d0ad5cee70f6dcbab97e7ac427a2568c53389f812'
@@ -160,4 +160,3 @@ package() {
 }
 
 # vim: ft=sh syn=sh et
-sha256sums=('744296ecd8b0523ebaa4a1b9800ade1456a1810bd2de909def4010dbcc14aaf2')
