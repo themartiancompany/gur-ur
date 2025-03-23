@@ -39,6 +39,11 @@ fi
 _os="$( \
   uname \
     -o)"
+if [[ "${_os}" != "GNU/Linux" ]]; then
+  _github_cli="github-cli"
+elif [[ "${_os}" == "Android" ]]; then
+  _github_cli="gh"
+fi
 _node="nodejs"
 _offline="false"
 _git="false"
@@ -61,15 +66,11 @@ license=(
   'AGPL3'
 )
 depends=(
-  "gh"
+  "${_github_cli}"
   "jq"
   "libcrash-bash"
   "${_py}-pygithub"
 )
-[[ "${_os}" != "GNU/Linux" ]] && \
-[[ "${_os}" == "Android" ]] && \
-  depends+=(
-  )
 optdepends=(
 )
 [[ "${_os}" == 'Android' ]] && \
