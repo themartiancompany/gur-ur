@@ -39,7 +39,7 @@ fi
 _os="$( \
   uname \
     -o)"
-if [[ "${_os}" != "GNU/Linux" ]]; then
+if [[ "${_os}" == "GNU/Linux" ]]; then
   _github_cli="github-cli"
 elif [[ "${_os}" == "Android" ]]; then
   _github_cli="gh"
