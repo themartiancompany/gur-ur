@@ -49,11 +49,13 @@ _offline="false"
 _git="false"
 _py="python"
 pkgname=gur
-pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
+pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1"
 _commit="a7d89797df04590e5d847e03a5a3e5e8f10469f0"
 pkgrel=1
 _pkgdesc=(
-  "Ur Github HTTP mirrors management tool."
+  "Ur application store Github"
+  "and Gitlab HTTP mirrors"
+  "management tool."
 )
 pkgdesc="${_pkgdesc[*]}"
 arch=(
