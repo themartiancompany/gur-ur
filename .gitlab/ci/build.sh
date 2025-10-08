@@ -181,24 +181,33 @@ _gl_dl_retrieve() {
     _token_private \
     _token \
     _curl_opts=() \
-    _output_file
+    _output_file \
+    _msg=()
   _output_file="${HOME}/$( \
     basename \
       "${_url#https://}")"
   _token_private="${HOME}/.config/gitlab.com/default.txt"
   if [[ ! -e "${_token_private}" ]]; then
+    _msg=(
+      "Missing private token at"
+      "'${_token_private}'."
+    )
     echo \
-      "Missing private token at '${HOME}/.config/gitlab.com/default.txt'."
-    echo \
-      "Set the GL_DL_PRIVATE_TOKEN variable in your Gitlab.com" \
+      "${_msg[*]}"
+    _msg=(
+      "Set the 'GL_DL_PRIVATE_TOKEN'"
+      "variable in your Gitlab.com" \
       "CI namespace configuration."
-    
+    )
+    echo \
+      "${_msg[*]}"
   fi
   _token="PRIVATE-TOKEN: $( \
     cat \
       "${_token_private}")"
   _curl_opts+=(
-    -v
+    --silent
+    -L
     --header
       "${_token}"
     -o 
