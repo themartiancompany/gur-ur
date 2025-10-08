@@ -143,6 +143,10 @@ _build() {
     -c \
     "${_cmd[*]}" - \
     "user"
+  pacman \
+    -Udd \
+    --noconfirm \
+    "/home/user/${_pkgname}/"*".pkg.tar."*
   for _file \
     in "/home/user/${_pkgname}/"*".pkg.tar."*; do
     mv \
@@ -158,10 +162,6 @@ _build() {
       --detach-sign \
       "${_file}"
   done
-  pacman \
-    -Udd \
-    --noconfirm \
-    "/home/user/${_pkgname}/"*".pkg.tar."*
 }
 
 _gl_dl_mini() {
