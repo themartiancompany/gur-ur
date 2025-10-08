@@ -183,6 +183,7 @@ _gl_dl_mini() {
     "source tarball from"
     "'${_ns}' namespace on"
     "Gitlab.com."
+  )
   echo \
     "${_msg[*]}"
   _gl_dl_retrieve \
