@@ -143,10 +143,6 @@ _build() {
     -c \
     "${_cmd[*]}" - \
     "user"
-  pacman \
-    -Udd \
-    --noconfirm \
-    "/home/user/${_pkgname}/"*".pkg.tar."*
   for _file \
     in "/home/user/${_pkgname}/"*".pkg.tar."*; do
     mv \
@@ -162,6 +158,10 @@ _build() {
       --detach-sign \
       "${_file}"
   done
+  pacman \
+    -Udd \
+    --noconfirm \
+    "/home/user/${_pkgname}/"*".pkg.tar."*
 }
 
 _gl_dl_mini() {
@@ -169,8 +169,22 @@ _gl_dl_mini() {
     _ns="${1}" \
     _pkg="${2}" \
     _commit="${3}" \
-    _url
-  _url="https://gitlab.com/${_ns}/${_pkg}/-/archive/${_commit}/${_pkg}-${_commit}.tar.gz"
+    _url \
+    _http \
+    _repo \
+    _tarname \
+    _msg=()
+  _tarname="${_pkg}-${_commit}"
+  _http="https://gitlab.com"
+  _repo="${_http}/${_ns}/${_pkg}"
+  _url="${_repo}/-/archive/${_commit}/${_tarname}.tar.gz"
+  _msg=(
+    "Downloading '${_tarname}'"
+    "source tarball from"
+    "'${_ns}' namespace on"
+    "Gitlab.com."
+  echo \
+    "${_msg[*]}"
   _gl_dl_retrieve \
     "${_url}"
 }
@@ -213,8 +227,6 @@ _gl_dl_retrieve() {
     -o 
       "${_output_file}"
   )
-  echo \
-    "${_url_opts[@]}"
   curl \
     "${_curl_opts[@]}" \
     "${_url}"
