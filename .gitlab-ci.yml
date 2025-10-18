@@ -32,11 +32,16 @@ default:
 stages:
   - build
 
+variables:
+  PACKAGE_RELEASE: "${CI_COMMIT_TAG}"
+  PACKAGE_REGISTRY_URL: "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/generic"
+
 .build:
-  artifacts:
-    reports:
-      metrics: output/metrics.txt
+  stage: build
   before_script:
+    - >
+      pacman-key \
+        --init
     - >
       pacman \
         -Sy \
@@ -51,11 +56,12 @@ stages:
         --noconfirm \
           bash \
           git \
+          glab \
           jq \
-          python-docutils
+          python-docutils \
+          release-cli
 
     # Extra packages dependencies
-    # archiso-encryption-git
     - >
       pacman \
         -Su \
@@ -75,6 +81,8 @@ stages:
         -p \
         "/root/.config/gitlab.com"
       echo \
+        "${PACKAGE_REGISTRY_URL}"
+      echo \
         "${GL_DL_PRIVATE_TOKEN}" > \
         "/root/.config/gitlab.com/default.txt"
       echo \
@@ -84,7 +92,8 @@ stages:
         "/root/bur.asc"
       gpg \
         --import \
-          "/root/bur.asc"
+          "/root/bur.asc" || \
+        true
 
     # Setup user
     - >
@@ -98,7 +107,7 @@ stages:
         "/home/user"
       cp \
         -r \
-        "/builds/themartiancompany/${CI_PROJECT_NAME}" \
+        "/builds/${CI_PROJECT_NAMESPACE}/${CI_PROJECT_NAME}" \
         "/home/user/${CI_PROJECT_NAME%-ur}"
       chown \
         -R \
@@ -106,18 +115,17 @@ stages:
         "/home/user"
   script:
     - ./.gitlab/ci/build.sh ${BUILD_SCRIPT_ARGS}
-  stage: build
+
+build:
   artifacts:
     paths:
       - dogeos-gnu-*.pkg.tar.*
-  # tags:
-  #   - vm
-
-build:
+    reports:
+      metrics: output/metrics.txt
   extends: .build
   parallel:
     matrix:
-      - BUILD_SCRIPT_ARGS: arch x86_64 ${CI_PROJECT_NAMESPACE} ${CI_PROJECT_NAME} ${CI_COMMIT_SHA}
+      - BUILD_SCRIPT_ARGS: arch x86_64 ${CI_PROJECT_NAMESPACE} ${CI_PROJECT_NAME} ${CI_COMMIT_SHA} ${CI_COMMIT_TAG} ${CI_JOB_TOKEN} ${PACKAGE_REGISTRY_URL}
   only:
     refs:
       - master
@@ -128,4 +136,23 @@ build:
       - COPYING
       - .gitlab-ci.yml
       - .gitlab/ci/*
+  interruptible: true
+
+.release:
+  extends: .build
+  after_script:
+    - ./.gitlab/ci/upload.sh ${BUILD_SCRIPT_ARGS}
+
+release:
+  artifacts:
+    reports:
+      metrics: output/metrics.txt
+  stage: build
+  extends: .release
+  parallel:
+    matrix:
+      - BUILD_SCRIPT_ARGS: arch x86_64 ${CI_PROJECT_NAMESPACE} ${CI_PROJECT_NAME} ${CI_COMMIT_SHA} ${CI_COMMIT_TAG} ${CI_JOB_TOKEN} ${PACKAGE_REGISTRY_URL}
+  rules:
+    - if:
+        $CI_COMMIT_TAG
   interruptible: true

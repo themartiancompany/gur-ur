@@ -34,6 +34,31 @@ shopt \
   -s \
     extglob
 
+_gur_mini() {
+  local \
+    _ns="${1}" \
+    _pkgbase="${2}" \
+    _release="${3}" \
+    _pkg="${4}" \
+    _http \
+    _repo \
+    _url \
+    _msg=()
+  _http="https://gitlab.com"
+  _repo="${_http}/${_ns}/${_pkgbase}-ur"
+  _url="${_repo}/-/releases/${_release}/downloads/${_pkg}"
+  _msg=(
+    "Downloading '${_pkg}'"
+    "binary CI release"
+    "from '${_ns}' namespace"
+    "Gitlab.com."
+  )
+  echo \
+    "${_msg[*]}"
+  _gl_dl_retrieve \
+    "${_url}"
+}
+
 _fur_mini() {
   local \
     _pkg="${1}" \
@@ -90,6 +115,7 @@ _requirements() {
   _fur_mini \
     "fur" \
     "${_fur_mini_opts[@]}"
+  _fur_release="0.0.1.1.1.1.1.1.1.1.1.1.1"
   _fur_opts+=(
     -v
     -p
@@ -106,6 +132,7 @@ _requirements() {
     recipe-get \
       "/home/user/${_pkgname}/PKGBUILD" \
       "_commit")"
+  # ohoh
   _gl_dl_mini \
     "${ns}" \
     "${_pkgname}" \
@@ -131,6 +158,12 @@ _build() {
     -df
     --nocheck
   )
+  pacman \
+    -S \
+    --noconfirm \
+    $(recipe-get \
+        "/home/user/${_pkgname}/PKGBUILD" \
+        "makedepends")
   _cmd+=(
     "cd"
       "/home/user/${_pkgname}" "&&"
@@ -228,6 +261,11 @@ _gl_dl_retrieve() {
     -o 
       "${_output_file}"
   )
+  _msg=(
+    "Downloading '${_url}'."
+  )
+  echo \
+    "${_msg[*]}"
   curl \
     "${_curl_opts[@]}" \
     "${_url}"
@@ -238,6 +276,18 @@ readonly \
   arch="${2}" \
   ns="${3}" \
   pkg="${4}"
+if (( 4 < "${#}" )); then
+  commit="${5}"
+fi
+if (( 5 < "${#}" )); then
+  tag="${6}"
+fi
+if (( 6 < "${#}" )); then
+  ci_job_token="${7}"
+fi
+if (( 7 < "${#}" )); then
+  package_registry_url="${8}"
+fi
 
 _requirements
 _build
