@@ -134,18 +134,19 @@ readonly \
   platform="${1}" \
   arch="${2}" \
   ns="${3}" \
-  pkg="${4}"
-if (( 4 < "${#}" )); then
-  commit="${5}"
-fi
+  pkg="${4}" \
+  project_id="${5}"
 if (( 5 < "${#}" )); then
-  tag="${6}"
+  commit="${6}"
 fi
 if (( 6 < "${#}" )); then
-  ci_job_token="${7}"
+  tag="${7}"
 fi
 if (( 7 < "${#}" )); then
-  package_registry_url="${8}"
+  ci_job_token="${8}"
+fi
+if (( 8 < "${#}" )); then
+  package_registry_url="${9}"
 fi
 
 _upload
