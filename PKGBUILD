@@ -68,6 +68,7 @@ license=(
   'AGPL3'
 )
 depends=(
+  "curl"
   "${_github_cli}"
   "gl-dl"
   "jq"
@@ -96,27 +97,27 @@ _tarname="${pkgname}-${_tag}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_archive_sum="adc8587c4f92e72190347fc1e0855696cc9c83c73e92e2fb5ff5473d707abc57"
-_archive_sig_sum="218a04ea9f8924de3eb9aa3c9f49527e2c6f3c930e061d1839ccee960078bf48"
+_sum="b22727a77445cb6a780ead07da0be0851140404ef54feeae798a06673787c0d1"
+_sig_sum="9d31ba5a6c206096ab89317bf901d7cbd943b7dc2310d721aad2919439ad34b0"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_dir="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}"
-_evmfs_archive_uri="${_evmfs_dir}/${_archive_sum}"
-_evmfs_archive_src="${_tarname}.tar.gz::${_evmfs_archive_uri}"
-_archive_sig_uri="${_evmfs_dir}/${_archive_sig_sum}"
-_archive_sig_src="${_tarname}.tar.gz.sig::${_archive_sig_uri}"
+_evmfs_uri="${_evmfs_dir}/${_sum}"
+_evmfs_src="${_tarname}.tar.gz::${_evmfs_uri}"
+_sig_uri="${_evmfs_dir}/${_sig_sum}"
+_sig_src="${_tarname}.tar.gz.sig::${_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
   makedepends+=(
     "evmfs"
   )
-  _src="${_evmfs_archive_src}"
-  _sum="${_archive_sum}"
+  _src="${_evmfs_src}"
+  _sum="${_sum}"
   source+=(
-    "${_archive_sig_src}"
+    "${_sig_src}"
   )
   sha256sums+=(
-    "${_archive_sig_sum}"
+    "${_sig_sum}"
   )
 elif [[ "${_git}" == true ]]; then
   makedepends+=(
@@ -130,7 +131,7 @@ elif [[ "${_git}" == false ]]; then
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
     _src="${_tarname}.tar.gz::${_url}/archive/${_commit}.tar.gz"
-    _sum="${_archive_sum}"
+    _sum="${_sum}"
   fi
 fi
 source=(
