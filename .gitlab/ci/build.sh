@@ -53,16 +53,21 @@ _gur_mini() {
     "${_msg[*]}"
   _gl_dl_retrieve \
     "https://gitlab.com/api/v4/projects/${_ns}%2F${_pkg}-ur"
-  ls
-  cat \
-    "${HOME}/${_ns}%2F${_pkg}-ur" | \
-    jq \
-      '.'
   _project_id="$( \
     cat \
       "${HOME}/${_ns}%2F${_pkg}-ur" | \
       jq \
         '.id')"
+  if [[ "${_project_id}" == "null" ]]; then
+    _msg=(
+      "The project '${_pkg}-ur' does not exist"
+      "in namespace '${_ns}'."
+    )
+    echo \
+      "${_msg[*]}"
+    return \
+      1
+  fi
   _api="https://gitlab.com/api/v4"
   _url="${_api}/projects/${_project_id}/releases"
   _gl_dl_retrieve \
@@ -154,28 +159,40 @@ _requirements() {
   _fur_mini \
     "fur" \
     "${_fur_mini_opts[@]}"
-  _fur_release="1.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1.1-4"
+  _fur_release="0.0.1.1.1.1.1.1.1.1.1.1.1"
   _fur_opts+=(
     -v
     -p
       "pacman"
   )
-  pacman \
-    -S \
-    --noconfirm \
-    "sudo"
+  # pacman \
+  #   -S \
+  #   --noconfirm \
+  #   "sudo"
   fur \
     "${_fur_opts[@]}" \
     "reallymakepkg"
+  _gur_mini \
+    "${ns}" \
+    "reallymakepkg" \
+    "1.2.4-1" || \
+  fur \
+    "${_fur_opts[@]}" \
+    "reallymakepkg"
+  _gur_mini \
+    "${ns}" \
+    "fur" \
+    "1.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1.1-3" || \
+  true
+  # ohoh
+  recipe-get \
+    -v \
+    "/home/user/${_pkgname}/PKGBUILD" \
+    "_commit"
   _commit="$( \
     recipe-get \
       "/home/user/${_pkgname}/PKGBUILD" \
       "_commit")"
-  _gur_mini \
-    "${ns}" \
-    "fur" \
-    "${_fur_release}"
-  # ohoh
   _gl_dl_mini \
     "${ns}" \
     "${_pkgname}" \
@@ -190,26 +207,29 @@ _build() {
     _reallymakepkg_opts=() \
     _makepkg_opts=() \
     _cmd=() \
-    _pkgname
+    _pkgname \
+    _home
+  _home="/home/user"
   _pkgname="${pkg%-ur}"
   _reallymakepkg_opts+=(
     -v
     -w
-      "'${HOME}/${_pkgname}-build'"
+      "'/home/user/${_pkgname}-build'"
   )
   _makepkg_opts+=(
     -df
     --nocheck
+    --skipinteg
   )
   pacman \
     -S \
     --noconfirm \
     $(recipe-get \
-        "/home/user/${_pkgname}/PKGBUILD" \
+        "${_home}/${_pkgname}/PKGBUILD" \
         "makedepends")
   _cmd+=(
     "cd"
-      "/home/user/${_pkgname}" "&&"
+      "${_home}/${_pkgname}" "&&"
     "reallymakepkg"
       "${_reallymakepkg_opts[@]}"
       "--"
@@ -222,9 +242,9 @@ _build() {
   pacman \
     -Udd \
     --noconfirm \
-    "/home/user/${_pkgname}/"*".pkg.tar."*
+    "${_home}/${_pkgname}/"*".pkg.tar."*
   for _file \
-    in "/home/user/${_pkgname}/"*".pkg.tar."*; do
+    in "${_home}/${_pkgname}/"*".pkg.tar."*; do
     mv \
       "${_file}" \
       "dogeos-gnu-$( \
@@ -273,12 +293,21 @@ _gl_dl_retrieve() {
     _token \
     _curl_opts=() \
     _output_file \
-    _msg=()
+    _msg=() \
+    _token_missing
   _output_file="${HOME}/$( \
     basename \
       "${_url#https://}")"
   _token_private="${HOME}/.config/gitlab.com/default.txt"
+  _token_missing="false"
   if [[ ! -e "${_token_private}" ]]; then
+    _token_missing="true"
+  elif [[ -e "${_token_private}" ]]; then
+    if [[ "$(cat "${_token_private}")" == ""  ]]; then
+      _token_missing="true"
+    fi
+  fi
+  if [[ "${_token_missing}" == "true" ]]; then
     _msg=(
       "Missing private token at"
       "'${_token_private}'."
@@ -288,10 +317,12 @@ _gl_dl_retrieve() {
     _msg=(
       "Set the 'GL_DL_PRIVATE_TOKEN'"
       "variable in your Gitlab.com" \
-      "CI namespace configuration."
+      "CI namespace or repository configuration."
     )
     echo \
       "${_msg[*]}"
+    exit \
+      1
   fi
   _token="PRIVATE-TOKEN: $( \
     cat \
