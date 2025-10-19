@@ -51,7 +51,7 @@ _py="python"
 pkgname=gur
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1.1"
 _commit="5e573512167e6a54eab2dd7d280bf2145e346290"
-pkgrel=2
+pkgrel=3
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
