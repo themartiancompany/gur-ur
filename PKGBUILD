@@ -49,9 +49,9 @@ _offline="false"
 _git="false"
 _py="python"
 pkgname=gur
-pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1.1"
-_commit="5e573512167e6a54eab2dd7d280bf2145e346290"
-pkgrel=3
+pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
+_commit="9e8f1a662281ad1090122c05435fbd3d335e641e"
+pkgrel=1
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
@@ -98,7 +98,7 @@ if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
 _sum="6b70dd2f6c347d448c2d6140fdb70429d17135e6713ea6c095df1b34e4010e6a"
-_sig_sum="3b2174a60a88a8e0a4a1f9facf9d61ca5fcc8cd12e9ed48f32c52387d5304c58"
+_sig_sum="59123887f3cbc54408adad80588ac711239292735a2007b58d485e4d00e24714"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
