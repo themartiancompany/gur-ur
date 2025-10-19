@@ -154,7 +154,7 @@ _requirements() {
   _fur_mini \
     "fur" \
     "${_fur_mini_opts[@]}"
-  _fur_release="0.0.1.1.1.1.1.1.1.1.1.1.1"
+  _fur_release="1.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1.1-4"
   _fur_opts+=(
     -v
     -p
@@ -174,7 +174,7 @@ _requirements() {
   _gur_mini \
     "${ns}" \
     "fur" \
-    "1.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1.1-2"
+    "${_fur_release}"
   # ohoh
   _gl_dl_mini \
     "${ns}" \
