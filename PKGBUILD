@@ -50,7 +50,7 @@ _git="false"
 _py="python"
 pkgname=gur
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1.1"
-_commit="5bab63e60a34cf16f37dbfa06370e95e6cda3d63"
+_commit="5e573512167e6a54eab2dd7d280bf2145e346290"
 pkgrel=2
 _pkgdesc=(
   "Ur application store Github"
@@ -97,8 +97,8 @@ _tarname="${pkgname}-${_tag}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_sum="b22727a77445cb6a780ead07da0be0851140404ef54feeae798a06673787c0d1"
-_sig_sum="9d31ba5a6c206096ab89317bf901d7cbd943b7dc2310d721aad2919439ad34b0"
+_sum="6b70dd2f6c347d448c2d6140fdb70429d17135e6713ea6c095df1b34e4010e6a"
+_sig_sum="3b2174a60a88a8e0a4a1f9facf9d61ca5fcc8cd12e9ed48f32c52387d5304c58"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
