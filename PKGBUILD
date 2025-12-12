@@ -133,8 +133,12 @@ checkdepends=(
 group=(
   "${_proj}"
 )
-source=()
-sha256sums=()
+source=(
+ "COPYING"
+)
+sha256sums=(
+  "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
+)
 _url="${url}"
 _tag="${_commit}"
 _tag_name="commit"
