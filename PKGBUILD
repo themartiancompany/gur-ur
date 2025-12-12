@@ -80,6 +80,7 @@ if [[ "${_docs}" == "true" ]]; then
 fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
 _commit="159ba217e491dba58964ebc128bd7991abe04201"
+_evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
 pkgrel=1
 _pkgdesc=(
   "Ur application store Github"
@@ -98,7 +99,7 @@ license=(
 )
 depends=(
   "curl"
-  "evm-gnupg"
+  "evm-gnupg>=${_evm_gnupg_ver}"
   "${_github_cli}"
   "gl-dl"
   "jq"
