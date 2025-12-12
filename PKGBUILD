@@ -19,10 +19,13 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-# Maintainer: Truocolo <truocolo@aol.com>
-# Maintainer: Truocolo <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
-# Maintainer: Pellegrino Prevete (dvorak) <pellegrinoprevete@gmail.com>
-# Maintainer: Pellegrino Prevete (dvorak) <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
+# Maintainers:
+#   Truocolo
+#     <truocolo@aol.com>
+#     <truocolo@0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b>
+#   Pellegrino Prevete (dvorak)
+#     <pellegrinoprevete@gmail.com>
+#     <dvorak@0x87003Bd6C074C713783df04f36517451fF34CBEf>
 
 _evmfs_available="$( \
   command \
@@ -44,14 +47,29 @@ if [[ "${_os}" == "GNU/Linux" ]]; then
 elif [[ "${_os}" == "Android" ]]; then
   _github_cli="gh"
 fi
+if [[ ! -v "_offline" ]]; then
+  _offline="false"
+fi
+if [[ ! -v "_git" ]]; then
+  _git="false"
+fi
+if [[ ! -v "_git_http_host" ]]; then
+  _git_http_host="gitlab"
+fi
+if [[ ! -v "_archive_format" ]]; then
+  _archive_format="tar.gz"
+  if [[ "${_git_http_host}" == "github" ]]; then
+    _archive_format="zip"
+  fi
+fi
 _node="nodejs"
-_offline="false"
-_git="false"
 _py="python"
-pkgname=gur
-pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
-_commit="9e8f1a662281ad1090122c05435fbd3d335e641e"
-pkgrel=2
+_proj="hip"
+_pkg=gur
+pkgname="${_pkg}"
+pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
+_commit="c22105c22c95f3207ce03f67b390a933f5f90c55"
+pkgrel=1
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
@@ -61,14 +79,15 @@ pkgdesc="${_pkgdesc[*]}"
 arch=(
   'any'
 )
-_http="https://github.com"
+_http="https://${_git_http_host}.com"
 _ns="themartiancompany"
-url="${_http}/${_ns}/${pkgname}"
+url="${_http}/${_ns}/${_pkg}"
 license=(
   'AGPL3'
 )
 depends=(
   "curl"
+  "evm-gnupg"
   "${_github_cli}"
   "gl-dl"
   "jq"
@@ -88,6 +107,9 @@ makedepends=(
 checkdepends=(
   "shellcheck"
 )
+group=(
+  "${_proj}"
+)
 source=()
 sha256sums=()
 _url="${url}"
@@ -97,8 +119,8 @@ _tarname="${pkgname}-${_tag}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_sum="6b70dd2f6c347d448c2d6140fdb70429d17135e6713ea6c095df1b34e4010e6a"
-_sig_sum="59123887f3cbc54408adad80588ac711239292735a2007b58d485e4d00e24714"
+_sum="b1019ca6794a47edf42267fb729c1050ed0838061298a9ace42c7b1605e90423"
+_sig_sum="dd4b70439b4424748640ad9b239ac3d4731348e9c4d6a50e4a7536fd363711d3"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
@@ -157,13 +179,49 @@ check() {
     check
 }
 
-package() {
+package_gur() {
+  local \
+    _make_opts=()
+  _make_opts+=(
+    PREFIX="/usr"
+    DESTDIR="${pkgdir}"
+  )
   cd \
     "${_tarname}"
   make \
-    PREFIX="/usr" \
-    DESTDIR="${pkgdir}" \
-    install
+    "${_make_opts[@]}" \
+    install-scripts
+  install \
+    -Dm644 \
+    "COPYING" \
+    -t \
+    "${pkgdir}/usr/share/licenses/${pkgname}/"
+}
+
+package_gur-docs() {
+  local \
+    _make_opts=()
+  pkgdesc="${pkgdesc} (documentation)"
+  depends=()
+  optdepends=(
+    "${_gur_docs_ref_optdepends[*]}"
+  )
+  provides=()
+  _make_opts+=(
+    PREFIX="/usr"
+    DESTDIR="${pkgdir}"
+  )
+  cd \
+    "${_tarname}"
+  make \
+    "${_make_opts[@]}" \
+    install-doc \
+    install-man
+  install \
+    -Dm644 \
+    "COPYING" \
+    -t \
+    "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
 
 # vim: ft=sh syn=sh et
