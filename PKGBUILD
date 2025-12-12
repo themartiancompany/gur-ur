@@ -62,11 +62,22 @@ if [[ ! -v "_archive_format" ]]; then
     _archive_format="zip"
   fi
 fi
+if [[ ! -v "_docs" ]]; then
+  _docs="true"
+fi
 _node="nodejs"
 _py="python"
 _proj="hip"
 _pkg=gur
-pkgname="${_pkg}"
+pkgbase="${_pkg}"
+pkgname=(
+  "${_pkg}"
+)
+if [[ "${_docs}" == "true" ]]; then
+  pkgname+=(
+    "${pkgbase}-docs"
+  )
+fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
 _commit="c22105c22c95f3207ce03f67b390a933f5f90c55"
 pkgrel=1
@@ -94,7 +105,19 @@ depends=(
   "libcrash-bash"
   "${_py}-pygithub"
 )
+_gur_docs_optdepends=(
+  "${_pkg}-docs:"
+    "Gur"
+    "documentation"
+    "and manuals."
+)
+_gur_docs_ref_optdepends+=(
+ "${_pkg}:"
+   "The package this documentation"
+   "package pertains to."
+)
 optdepends=(
+  "${_gur_docs_optdepends[*]}"
 )
 if [[ "${_os}" == 'Android' ]]; then
   optdepends+=(
