@@ -78,8 +78,8 @@ if [[ "${_docs}" == "true" ]]; then
     "${pkgbase}-docs"
   )
 fi
-pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
-_commit="c22105c22c95f3207ce03f67b390a933f5f90c55"
+pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
+_commit="e2fa024f31ebc55cc454dc6889719136cf7c4fff"
 pkgrel=1
 _pkgdesc=(
   "Ur application store Github"
@@ -146,8 +146,8 @@ _tarname="${pkgname}-${_tag}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_sum="b1019ca6794a47edf42267fb729c1050ed0838061298a9ace42c7b1605e90423"
-_sig_sum="dd4b70439b4424748640ad9b239ac3d4731348e9c4d6a50e4a7536fd363711d3"
+_sum="4d37e41cf09cde70f684232cfdd2fdfcdda4e52808ca4d79f23038790e2f3533"
+_sig_sum="e6f5b2cfdce19699ba31b937fc93cb6c496542b3b566eef64cd3c3128cf2b207"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
@@ -220,7 +220,7 @@ package_gur() {
     install-scripts
   install \
     -Dm644 \
-    "COPYING" \
+    "${srcdir}/COPYING" \
     -t \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
@@ -246,7 +246,7 @@ package_gur-docs() {
     install-man
   install \
     -Dm644 \
-    "COPYING" \
+    "${srcdir}/COPYING" \
     -t \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
