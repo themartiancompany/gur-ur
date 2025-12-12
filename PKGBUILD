@@ -183,10 +183,10 @@ elif [[ "${_git}" == false ]]; then
     _sum="${_sum}"
   fi
 fi
-source=(
+source+=(
   "${_src}"
 )
-sha256sums=(
+sha256sums+=(
   "${_sum}"
 )
 validpgpkeys=(
