@@ -78,8 +78,8 @@ if [[ "${_docs}" == "true" ]]; then
     "${pkgbase}-docs"
   )
 fi
-pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
-_commit="e2fa024f31ebc55cc454dc6889719136cf7c4fff"
+pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
+_commit="1e89cd23c9f35916fb5fe223e93ffd6a15a77e79"
 pkgrel=1
 _pkgdesc=(
   "Ur application store Github"
@@ -146,8 +146,8 @@ _tarname="${pkgname}-${_tag}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_sum="4d37e41cf09cde70f684232cfdd2fdfcdda4e52808ca4d79f23038790e2f3533"
-_sig_sum="e6f5b2cfdce19699ba31b937fc93cb6c496542b3b566eef64cd3c3128cf2b207"
+_sum="aba4681d2002aac501bf2418e7505fed2d848763d4fc8f069830560f0b3272b1"
+_sig_sum="43e84c3d19248be91a7a014ac7aefb5397ef3cd56ed5eecf0ba9a17aacd48a88"
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
