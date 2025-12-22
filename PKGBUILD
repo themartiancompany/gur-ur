@@ -81,7 +81,7 @@ fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1.1.1.1"
 _commit="22d2c54ecb2654d477892ab321da802ef2ccf90d"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
-pkgrel=2
+pkgrel=1
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
