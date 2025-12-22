@@ -151,6 +151,8 @@ _sum="85ec4607dc633ca5ac5609c6c2fca0404f70dee2d0cffbbf215be511eaaaa811"
 _sig_sum="b9d816c74a39c5b4714eb17e92bbd168811b15d924efcbad784593f035e23e05"
 # Dvorak
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
+# Truocolo
+_evmfs_ns="0x6E5163fC4BFc1511Dbe06bB605cc14a3e462332b"
 _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_dir="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}"
