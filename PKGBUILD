@@ -78,8 +78,8 @@ if [[ "${_docs}" == "true" ]]; then
     "${pkgbase}-docs"
   )
 fi
-pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1"
-_commit="446c6557a8a31d3341d365e88a9a233cb3383e87"
+pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
+_commit="61ca76e55a03710a1e3687aa8bc289960b816ea4"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
 pkgrel=1
 _pkgdesc=(
@@ -147,8 +147,8 @@ _tarname="${pkgname}-${_tag}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_sum="85ec4607dc633ca5ac5609c6c2fca0404f70dee2d0cffbbf215be511eaaaa811"
-_sig_sum="b9d816c74a39c5b4714eb17e92bbd168811b15d924efcbad784593f035e23e05"
+_sum="6c10f6a81f064e299906a25b9662483546c9b1b1a36a423674feeecea8d7d0d2"
+_sig_sum="267f97b621b4c8ec213ef7c0ff84d7027c298fdaadfc4e262b8ae9d023f5d298"
 # Dvorak
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 # Truocolo
