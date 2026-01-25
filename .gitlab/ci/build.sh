@@ -234,7 +234,7 @@ _build() {
   pacman \
     -S \
     --noconfirm \
-    $(recipe-get
+    $(recipe-get \
         "${_home}/${_pkgname}/PKGBUILD" \
         "makedepends")
   _cmd+=(
