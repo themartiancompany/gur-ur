@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: AGPL-3.0
 
 #    ----------------------------------------------------------------------
-#    Copyright © 2024, 2025  Pellegrino Prevete
+#    Copyright © 2024, 2025, 2026  Pellegrino Prevete
 #
 #    All rights reserved
 #    ----------------------------------------------------------------------
@@ -81,7 +81,7 @@ fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
 _commit="61ca76e55a03710a1e3687aa8bc289960b816ea4"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
-pkgrel=5
+pkgrel=6
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
