@@ -87,7 +87,7 @@ fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
 _commit="ea67472288f9fea653862a574eb81c1d5e94c6bc"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
-pkgrel=18
+pkgrel=19
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
@@ -141,10 +141,8 @@ group=(
   "${_proj}"
 )
 source=(
- "COPYING"
 )
 sha256sums=(
-  "0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0"
 )
 _url="${url}"
 _tag="${_commit}"
@@ -240,7 +238,7 @@ package_gur() {
     install-scripts
   install \
     -Dm644 \
-    "${srcdir}/COPYING" \
+    "COPYING" \
     -t \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
@@ -266,7 +264,7 @@ package_gur-docs() {
     install-man
   install \
     -Dm644 \
-    "${srcdir}/COPYING" \
+    "COPYING" \
     -t \
     "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
