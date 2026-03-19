@@ -53,8 +53,14 @@ fi
 if [[ ! -v "_git" ]]; then
   _git="false"
 fi
+if [[ ! -v "_git_service" ]]; then
+  _git_service="gitlab"
+fi
+if [[ ! -v "_git_http" ]]; then 
+  _git_http="${_git_service}"
+fi
 if [[ ! -v "_git_http_host" ]]; then
-  _git_http_host="gitlab"
+  _git_http_host="${_git_http}"
 fi
 if [[ ! -v "_archive_format" ]]; then
   _archive_format="tar.gz"
@@ -81,7 +87,7 @@ fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
 _commit="61ca76e55a03710a1e3687aa8bc289960b816ea4"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
-pkgrel=10
+pkgrel=12
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
@@ -144,9 +150,12 @@ _url="${url}"
 _tag="${_commit}"
 _tag_name="commit"
 _tarname="${pkgname}-${_tag}"
+_tarfile="${_tarname}.${_archive_format}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
+_github_sum="SKIP"
+_github_sig_sum="SKIP"
 _sum="6c10f6a81f064e299906a25b9662483546c9b1b1a36a423674feeecea8d7d0d2"
 _sig_sum="267f97b621b4c8ec213ef7c0ff84d7027c298fdaadfc4e262b8ae9d023f5d298"
 # Dvorak
@@ -157,9 +166,9 @@ _evmfs_network="100"
 _evmfs_address="0x69470b18f8b8b5f92b48f6199dcb147b4be96571"
 _evmfs_dir="evmfs://${_evmfs_network}/${_evmfs_address}/${_evmfs_ns}"
 _evmfs_uri="${_evmfs_dir}/${_sum}"
-_evmfs_src="${_tarname}.tar.gz::${_evmfs_uri}"
+_evmfs_src="${_tarfile}::${_evmfs_uri}"
 _sig_uri="${_evmfs_dir}/${_sig_sum}"
-_sig_src="${_tarname}.tar.gz.sig::${_sig_uri}"
+_sig_src="${_tarfile}.sig::${_sig_uri}"
 if [[ "${_evmfs}" == "true" ]]; then
   makedepends+=(
     "evmfs"
@@ -180,10 +189,10 @@ elif [[ "${_git}" == true ]]; then
   _sum="SKIP"
 elif [[ "${_git}" == false ]]; then
   if [[ "${_tag_name}" == 'pkgver' ]]; then
-    _src="${_tarname}.tar.gz::${_url}/archive/refs/tags/${_tag}.tar.gz"
+    _src="${_tarfile}::${_url}/archive/refs/tags/${_tag}.${_archive_format}"
     _sum="d4f4179c6e4ce1702c5fe6af132669e8ec4d0378428f69518f2926b969663a91"
   elif [[ "${_tag_name}" == "commit" ]]; then
-    _src="${_tarname}.tar.gz::${_url}/archive/${_commit}.tar.gz"
+    _src="${_tarfile}::${_url}/archive/${_commit}.${_archive_format}"
     _sum="${_sum}"
   fi
 fi
