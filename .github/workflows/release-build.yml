@@ -1611,8 +1611,6 @@ jobs:
       - name:
           Builds the Windows package.
         run: |
-          sha256sum \
-            "COPYING"
           cp \
             "COPYING" \
             "COPYING.old"
