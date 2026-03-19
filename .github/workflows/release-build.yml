@@ -1632,13 +1632,15 @@ jobs:
           _evmfs="false" \
           _git_service="github" \
           recipe-get \
+            -v \
             "PKGBUILD" \
             "source"
           _evmfs="false" \
           _git_service="github" \
           recipe-get \
+            -v \
             "PKGBUILD" \
-            "source"
+            "sha256sums"
           PKGEXT='.pkg.tar.xz' \
           _evmfs="false" \
           _git_service="github" \
