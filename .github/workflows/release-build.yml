@@ -1618,6 +1618,16 @@ jobs:
           #     recipe-get \
           #       "PKGBUILD" \
           #       "pkgbase")"
+          _evmfs="false" \
+          _git_service="github" \
+          recipe-get \
+            "PKGBUILD" \
+            "source"
+          _evmfs="false" \
+          _git_service="github" \
+          recipe-get \
+            "PKGBUILD" \
+            "source"
           PKGEXT='.pkg.tar.xz' \
           _evmfs="false" \
           _git_service="github" \
