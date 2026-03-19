@@ -87,7 +87,7 @@ fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
 _commit="ea67472288f9fea653862a574eb81c1d5e94c6bc"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
-pkgrel=17
+pkgrel=18
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
@@ -154,8 +154,8 @@ _tarfile="${_tarname}.${_archive_format}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_github_sum="9dda721570cddc49b0898a80403cfab5e5d514150dcd81b6a67a1f3ab8732f73"
-_github_sig_sum="bb9c9690baf453316f25ba172a7194084fa412da0c1f00b5c7daf2931c560c0b"
+_github_sum="dfa96a0235a9e5c158b23f5b68adc79336beb0e2deb34be194c29355ed08d469"
+_github_sig_sum="f22ed8b451d858aa11bb4a7260f438d78be675d2eee99ae7915703d40c66972b"
 _gitlab_sum="6c10f6a81f064e299906a25b9662483546c9b1b1a36a423674feeecea8d7d0d2"
 _gitlab_sig_sum="267f97b621b4c8ec213ef7c0ff84d7027c298fdaadfc4e262b8ae9d023f5d298"
 if [[ "${_git_service}" == "github" ]]; then
