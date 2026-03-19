@@ -1611,23 +1611,13 @@ jobs:
       - name:
           Builds the Windows package.
         run: |
-          cp \
-            "COPYING" \
-            "COPYING.old"
           dos2unix \
             "PKGBUILD"
-          sha256sum \
-            "COPYING"
-          cp \
-            "COPYING.old" \
-            "COPYING"
           # export \
           #   _pkgbase="$( \
           #     recipe-get \
           #       "PKGBUILD" \
           #       "pkgbase")"
-          sha256sum \
-            "COPYING
           _evmfs="false" \
           _git_service="github" \
           recipe-get \
