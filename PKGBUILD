@@ -46,6 +46,10 @@ if [[ "${_os}" == "GNU/Linux" ]]; then
   _github_cli="github-cli"
 elif [[ "${_os}" == "Android" ]]; then
   _github_cli="gh"
+elif [[ "${_os}" == "Msys" ]]; then
+  _github_cli="gh"
+else
+  _github_cli="gh"
 fi
 if [[ ! -v "_offline" ]]; then
   _offline="false"
@@ -87,7 +91,7 @@ fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
 _commit="ea67472288f9fea653862a574eb81c1d5e94c6bc"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
-pkgrel=21
+pkgrel=22
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
