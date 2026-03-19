@@ -1628,7 +1628,8 @@ jobs:
           #     recipe-get \
           #       "PKGBUILD" \
           #       "pkgbase")"
-          sha256sum "COPYING
+          sha256sum \
+            "COPYING
           _evmfs="false" \
           _git_service="github" \
           recipe-get \
