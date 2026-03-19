@@ -85,7 +85,7 @@ if [[ "${_docs}" == "true" ]]; then
   )
 fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
-_commit="61ca76e55a03710a1e3687aa8bc289960b816ea4"
+_commit="ea67472288f9fea653862a574eb81c1d5e94c6bc"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
 pkgrel=17
 _pkgdesc=(
