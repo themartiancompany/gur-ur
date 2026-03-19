@@ -87,7 +87,7 @@ fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
 _commit="61ca76e55a03710a1e3687aa8bc289960b816ea4"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
-pkgrel=14
+pkgrel=16
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
@@ -272,4 +272,3 @@ package_gur-docs() {
 }
 
 # vim: ft=sh syn=sh et
-0d96a4ff68ad6d4b6f1f30f713b18d5184912ba8dd389f86aa7710db079abcb0  COPYING
