@@ -87,7 +87,7 @@ fi
 pkgver="0.0.0.0.0.0.0.0.0.0.0.0.0.0.1.1"
 _commit="61ca76e55a03710a1e3687aa8bc289960b816ea4"
 _evm_gnupg_ver="0.0.0.0.0.0.0.0.1.1.1"
-pkgrel=12
+pkgrel=13
 _pkgdesc=(
   "Ur application store Github"
   "and Gitlab HTTP mirrors"
@@ -154,10 +154,17 @@ _tarfile="${_tarname}.${_archive_format}"
 if [[ "${_offline}" == "true" ]]; then
   _url="file://${HOME}/${pkgname}"
 fi
-_github_sum="SKIP"
-_github_sig_sum="SKIP"
-_sum="6c10f6a81f064e299906a25b9662483546c9b1b1a36a423674feeecea8d7d0d2"
-_sig_sum="267f97b621b4c8ec213ef7c0ff84d7027c298fdaadfc4e262b8ae9d023f5d298"
+_github_sum="9dda721570cddc49b0898a80403cfab5e5d514150dcd81b6a67a1f3ab8732f73"
+_github_sig_sum="bb9c9690baf453316f25ba172a7194084fa412da0c1f00b5c7daf2931c560c0b"
+_gitlab_sum="6c10f6a81f064e299906a25b9662483546c9b1b1a36a423674feeecea8d7d0d2"
+_gitlab_sig_sum="267f97b621b4c8ec213ef7c0ff84d7027c298fdaadfc4e262b8ae9d023f5d298"
+if [[ "${_git_service}" == "github" ]]; then
+  _sum="${_github_sum}"
+  _sig_sum="${_github_sig_sum}"
+elif [[ "${_git_service}" == "gitlab" ]]; then
+  _sum="${_gitlab_sum}"
+  _sig_sum="${_gitlab_sig_sum}"
+fi
 # Dvorak
 _evmfs_ns="0x87003Bd6C074C713783df04f36517451fF34CBEf"
 # Truocolo
